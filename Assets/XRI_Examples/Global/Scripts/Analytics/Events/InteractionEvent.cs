@@ -31,7 +31,7 @@ namespace UnityEngine.XR.Content.Interaction.Analytics
     { }
 
     /// <summary>
-    /// Base class for station parameters. A station parameter has a <c>Station</c> and <c>Substaion</c> name.
+    /// Base class for station parameters. A station parameter has a <c>Station</c> and <c>Substation</c> name.
     /// </summary>
     [Serializable]
     abstract class StationParameter : InteractionEventParameter

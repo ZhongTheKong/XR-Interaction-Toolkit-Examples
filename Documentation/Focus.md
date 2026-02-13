@@ -6,7 +6,7 @@
 
 Interactables are considered focused when they are selected by an Interactor. An Interactable's `Focus Mode` defines the focus policy of that Interactable. `Single` allows the Interactable to only be focused by a single Interaction group at a time and allows other Interaction groups to take focus by automatically losing focus. `Multiple` allows for multiple Interaction groups at a time to focus the Interactable. `None` means that focus is not supported this Interactable.
 
-Focus can be useful when trying perform actions on Interactables, for example, changing the color of focused Interactables from a menu.
+Using the focus state can be useful when trying perform actions on Interactables while freeing up controllers or hands to perform related interactions or selections, for example, changing the color of focused Interactables from a UI menu.
 
 ## Basic examples
 

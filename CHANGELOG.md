@@ -5,6 +5,32 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- Headers should be listed in this order: Added, Changed, Deprecated, Removed, Fixed, Security -->
+## [3.4.0] - 2026-02-13
+
+### Changed
+- Updated Unity Editor to 6.3 LTS (`6000.3.0f1`).
+- Updated `com.unity.ai.navigation` to version `2.0.10`.
+- Updated `com.unity.ide.rider` to version `3.0.39`.
+- Updated `com.unity.multiplayer.center` to version `1.0.1`.
+- Updated `com.unity.inputsystem` to version `1.16.0`.
+- Updated `com.unity.render-pipelines.universal` to version `17.3.0`.
+- Updated `com.unity.test-framework` to version `1.6.0`.
+- Updated `com.unity.timeline` to version `1.8.10`.
+- Updated `com.unity.ugui` to version `2.0.0`.
+- Updated `com.unity.xr.interaction.toolkit` to version `3.4.0`.
+- Updated `com.unity.xr.management` to version `4.5.4`.
+- Updated `com.unity.xr.openxr` to version `1.16.1`.
+
+### Removed
+- Removed `com.unity.textmeshpro` due to upgrade to Unity UI (`com.unity.ugui`) 2.0.0.
+
+### Fixed
+- Fixed Preset Manager project settings to use all the presets installed with the Starter Assets sample.
+- Fixed or suppressed warnings in project scripts after Unity 6.3 version upgrade.
+- Fixed warning with `Assets/XRI_Examples/Environment/Shaders/Waterfall_Ripples.shadergraph` after Unity 6.3 version upgrade by updating Color node.
+- Fixed the door with lock system so that the key can be turned once in the lock, plus added the ability to start with the door locked.
+- Fixed some of the `Rigidbody` settings for the `DoorLocked` prefab to make it easier to manipulate.
+
 ## [3.1.2] - 2025-05-16
 
 ### Changed
