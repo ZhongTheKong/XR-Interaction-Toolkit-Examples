@@ -8,7 +8,7 @@ The intention of this project is to provide a means for getting started with the
 ## Requirements
 The current version of the XRI Examples is compatible with the following versions of the Unity Editor:
 
-* 2022.3 and later
+* Unity 6.3 LTS (6000.3.0f1) and later
 
 ## General setup
 

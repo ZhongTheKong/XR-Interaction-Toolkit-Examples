@@ -45,7 +45,9 @@ namespace UnityEngine.XR.Content.Interaction.Analytics
                 return false;
 
 #if UNITY_EDITOR
+#pragma warning disable CS0618 // Type or member is obsolete -- Editor Analytics APIs have changed significantly and requires new structure
             var result = EditorAnalytics.SendEventWithLimit(m_EventName, parameter);
+#pragma warning restore CS0618
 #else
             var result = AnalyticsResult.AnalyticsDisabled;
 #endif
@@ -61,9 +63,11 @@ namespace UnityEngine.XR.Content.Interaction.Analytics
         }
 
         internal bool Register()
+#pragma warning disable CS0618 // Type or member is obsolete -- Editor Analytics APIs have changed significantly and requires new structure
         {
 #if UNITY_EDITOR && ENABLE_CLOUD_SERVICES_ANALYTICS
             return EditorAnalytics.RegisterEventWithLimit(m_EventName, m_MaxEventsPerHour, m_MaxElementCount, XrcAnalytics.k_VendorKey) == AnalyticsResult.Ok;
+#pragma warning restore CS0618
 #else
             return false;
 #endif

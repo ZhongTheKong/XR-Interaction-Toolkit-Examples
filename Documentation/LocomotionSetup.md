@@ -21,9 +21,13 @@ The center console of the table contains configuration options.
 * **Strafe Enabled** - Sideways movement when using the left or right thumbstick or touchpad
 * **Comfort Mode** - Turns on and off comfort mode tunneling (vignette effect)
 * **Rig Gravity Enabled** - When the player walks over a ledge (either with locomotion or their actual body), this will cause the user rig to reposition itself to be at the new ground level.
+* **Fly Enabled** - When enabled, continuous locomotion controls will allow movement in the forward Z direction that the headset is pointing. If a user is looking straight up and presses forward on the stick, they will move forward into the air. This may have unexpected side effects if coupled with **Rig Gravity Enabled**.
 * **Turn Speed** - How quickly (in degrees per second) to smoothly turn the user rig.
-* **Turnaround Enabled** - If pressing **back** on the thumbstick or touchpad will cause the user to turn around instantly.
+* **Turn Around Enabled** - If pressing **back** on the thumbstick or touchpad will cause the user to turn around instantly.
 * **Snap Turn** - Increment (in degrees) for **instant** side-turning.
+* **Grab Move Enabled** - If enabled, users can use the grip buttons on the controllers to grab in the air and pull themselves through the world.
+* **Move Ratio** - This is the ratio of movement when using **Grab Move**. A higher ratio value means that less hand or controller movement is required for larger locomotion movement through the world.
+* **Scaling Enabled** - When enabled along with **Grab Move**, the user can scale the XR Origin up and down, making them larger or smaller in the world.
 
 Each side of the table corresponds to a specific configuration for each hand.
 * **Locomotion Type** - Type of locomotion the thumbstick or touchpad will be bound to.

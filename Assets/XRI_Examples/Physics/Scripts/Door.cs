@@ -15,7 +15,12 @@ namespace UnityEngine.XR.Content.Interaction
         TransformJoint m_DoorPuller;
 
         [SerializeField]
-        GameObject m_KeyKnob;
+        [Tooltip("GameObject to enable when the key is placed in the lock. This represents the key-in-lock.")]
+        XRKnob m_KeyKnob;
+
+        [SerializeField]
+        [Tooltip("GameObject to disable when the key is placed in the lock. This is the empty key hole.")]
+        GameObject m_KeyHoleVisuals;
 
         [SerializeField]
         float m_HandleOpenValue = 0.1f;
@@ -25,6 +30,9 @@ namespace UnityEngine.XR.Content.Interaction
 
         [SerializeField]
         float m_HingeCloseAngle = 5.0f;
+
+        [SerializeField]
+        bool m_LockedOnStart = true;
 
         [SerializeField]
         float m_KeyLockValue = 0.9f;
@@ -45,10 +53,9 @@ namespace UnityEngine.XR.Content.Interaction
 
         JointLimits m_OpenDoorLimits;
         JointLimits m_ClosedDoorLimits;
-        bool m_Closed = false;
+        bool m_Closed;
+        bool m_Locked;
         float m_LastHandleValue = 1.0f;
-
-        bool m_Locked = false;
 
         GameObject m_KeySocket;
         IXRSelectInteractable m_Key;
@@ -73,8 +80,18 @@ namespace UnityEngine.XR.Content.Interaction
             m_ClosedDoorLimits.min = 0.0f;
             m_ClosedDoorLimits.max = 0.0f;
             m_DoorJoint.limits = m_ClosedDoorLimits;
-            m_KeyKnob.SetActive(false);
             m_Closed = true;
+            m_Locked = m_LockedOnStart;
+
+            if (m_KeyKnob == null)
+            {
+                Debug.LogWarning("Key Knob needs to be assigned for this component to work.", this);
+                return;
+            }
+
+            m_KeyKnob.gameObject.SetActive(false);
+            if (m_KeyHoleVisuals != null && m_LockedOnStart)
+                m_KeyHoleVisuals.transform.Rotate(Vector3.forward, m_KeyKnob.minAngle);
         }
 
         void Update()
@@ -103,7 +120,7 @@ namespace UnityEngine.XR.Content.Interaction
                     m_KeySocket.SetActive(true);
                     m_Key.transform.gameObject.SetActive(true);
                     newKeyInteractor.interactionManager.SelectEnter(newKeyInteractor, m_Key);
-                    m_KeyKnob.SetActive(false);
+                    m_KeyKnob.gameObject.SetActive(false);
                 }
             }
         }
@@ -140,7 +157,15 @@ namespace UnityEngine.XR.Content.Interaction
             m_Key = args.interactableObject;
             m_KeySocket.SetActive(false);
             m_Key.transform.gameObject.SetActive(false);
-            m_KeyKnob.SetActive(true);
+
+            if (m_KeyKnob != null)
+            {
+                m_KeyKnob.value = m_Locked ? 1f : 0f;
+                m_KeyKnob.gameObject.SetActive(true);
+            }
+
+            if (m_KeyHoleVisuals != null)
+                m_KeyHoleVisuals.SetActive(false);
         }
 
         public void KeyUpdate(float keyValue)
